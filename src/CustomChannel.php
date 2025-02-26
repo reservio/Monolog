@@ -81,9 +81,9 @@ class CustomChannel extends \Kdyby\Monolog\Logger
 	/**
 	 * {@inheritdoc}
 	 */
-	public function addRecord(int $level, string $message, array $context = []): bool
+	public function addRecord(int $level, string $message, array $context = [], ?DateTimeImmutable $datetime = null): bool
 	{
-		return $this->parentLogger->addRecord($level, $message, array_merge(['channel' => $this->name], $context));
+		return $this->parentLogger->addRecord($level, $message, array_merge(['channel' => $this->name], $context), $datetime);
 	}
 
 	/**
