@@ -13,6 +13,7 @@ namespace Kdyby\Monolog;
 use Kdyby\Monolog\Logger as KdybyLogger;
 use Monolog\Handler\HandlerInterface;
 use Monolog\Logger as MonologLogger;
+use Monolog\DateTimeImmutable;
 
 class CustomChannel extends \Kdyby\Monolog\Logger
 {
@@ -81,7 +82,7 @@ class CustomChannel extends \Kdyby\Monolog\Logger
 	/**
 	 * {@inheritdoc}
 	 */
-	public function addRecord(int $level, string $message, array $context = [], ?\DateTimeImmutable $datetime = null): bool
+	public function addRecord(int $level, string $message, array $context = [], ?DateTimeImmutable $datetime = null): bool
 	{
 		return $this->parentLogger->addRecord($level, $message, array_merge(['channel' => $this->name], $context), $datetime);
 	}
